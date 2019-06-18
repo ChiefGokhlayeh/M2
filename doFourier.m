@@ -1,9 +1,8 @@
-exec fourierPeriodicFun.sci
-exec fourierInt.sci
+#!/usr/bin/octave -qf
 
-[y, T] = fourierPeriodicFun([]);
+[y, T] = fourierPeriodicFun([], 1);
 x = -T:0.01:2*T;
-[y, T] = fourierPeriodicFun(x);
+[y, T] = fourierPeriodicFun(x, 1);
 plot(x, y, 'linewidth', 2);
 
 samples = 20;
