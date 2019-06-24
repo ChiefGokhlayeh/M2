@@ -1,8 +1,8 @@
 #!/usr/bin/octave -qf
 clear();
 
-x=[]
-y=[]
+x=[];
+y=[];
 
 # Wheel
 wheel_t=linspace(0, 2*pi);
@@ -12,12 +12,12 @@ x=[x nan cos(wheel_t)*3 - 9];
 y=[y nan sin(wheel_t)*3];
 
 # Right wheel
-x=[x nan cos(wheel_t)*3 + 9]
-y=[y nan sin(wheel_t)*3]
+x=[x nan cos(wheel_t)*3 + 9];
+y=[y nan sin(wheel_t)*3];
 
 # Floor
-x=[x nan -16 -12 nan -6 6 nan 12 16 15]
-y=[y nan   0   0 nan  0 0 nan  0  0  8]
+x=[x nan -16 -12 nan -6 6 nan 12 16 15];
+y=[y nan   0   0 nan  0 0 nan  0  0  8];
 
 # Roof
 # y(t) = a1*t^0 + a2*t^1 + a3*t^2
@@ -38,15 +38,20 @@ door_t=linspace(-16, 15);
 x=[x nan door_t];
 y=[y nan door_a(1)*door_t.^0 + door_a(2)*door_t.^1 + door_a(3)*door_t.^2 + door_a(4)*door_t.^3 + door_a(5)*door_t.^4 + door_a(6)*door_t.^5];
 
-alpha=pi/4;
+maxTime = 30; # in seconds
+startTime = time();
+alpha = 0;
 XY=[x;y];
-R=[cos(alpha) -sin(alpha);
-   sin(alpha) cos(alpha)];
-R_XY=R*XY;
-bla=R_XY;
 
-# Plotting
-axis([-10 20 -10 12]);
-axis('equal');
-grid('on');
-plot(x, y);
+while (time() - startTime < maxTime)
+		alpha += 0.01;
+		R=[cos(alpha) -sin(alpha);
+		   sin(alpha) cos(alpha)];
+		R_XY=R*XY;
+
+		#plot(x, y);
+		plot(R_XY(1, :), R_XY(2, :));
+		grid('on');
+		axis([-20 20 -20 20], "square");
+		drawnow();
+endwhile
