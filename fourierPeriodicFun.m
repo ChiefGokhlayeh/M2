@@ -9,10 +9,6 @@ function [f, T] = fourierPeriodicFun(t, bsp)
     # f ... function values at time t
     # T ... period
 
-    if argn(2) < 2
-        bsp = 1;
-    endif
-
     f = [];
     T = 0;
 
