@@ -25,4 +25,7 @@ n = 10;
 p = fourierSeries(x, a0, a, b ,T);
 plot(x, p, '-r', 'linewidth', 2);
 
+A = [abs(a0), sqrt(a.^2+b.^2)];
+bar(0:1:n, A);
+
 hold off
