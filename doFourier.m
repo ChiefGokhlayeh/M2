@@ -14,4 +14,9 @@ plot(t, f, '.r', "markersize", 8);
 
 I = fourierInt(f, h);
 disp(I);
+
+n = 10;
+[a0, a, b] = fourierCoeffs(t, f, T, n);
+disp(a0); disp(a); disp(b);
+
 hold off
