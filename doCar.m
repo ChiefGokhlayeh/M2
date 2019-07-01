@@ -44,14 +44,14 @@ alpha = 0;
 XY=[x;y];
 
 while (time() - startTime < maxTime)
-		alpha += 0.01;
-		R=[cos(alpha) -sin(alpha);
-		   sin(alpha) cos(alpha)];
-		R_XY=R*XY;
+    alpha += 0.01;
+    R=[cos(alpha) -sin(alpha);
+        sin(alpha) cos(alpha)];
+    R_XY=R*XY;
 
-		#plot(x, y);
-		plot(R_XY(1, :), R_XY(2, :));
-		grid('on');
-		axis([-20 20 -20 20], "square");
-		drawnow();
+    #plot(x, y);
+    plot(R_XY(1, :), R_XY(2, :));
+    grid('on');
+    axis([-20 20 -20 20], "square");
+    drawnow();
 endwhile
